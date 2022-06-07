@@ -55,9 +55,6 @@ def respond_with_facts():
         
     return {'status_code':200}
 
-@app.route('/')
-def index():
-    return f"<h3>Welcome to Cat Facts!</h3>"
 
 def validateRequest(request):
     req_headers = request.headers
@@ -76,6 +73,9 @@ def validateRequest(request):
         else:
             return False
 
-
+@app.route('/')
+def index():
+    return f"<h3>Welcome to Cat Facts!</h3>"
+    
 if __name__=='__main__':
     app.run(port=5000)
