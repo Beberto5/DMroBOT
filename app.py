@@ -35,6 +35,8 @@ def webhook_challenge():
 @app.route('/webhook/twitter',methods=['POST'])
 def respond_with_facts():
     if validateRequest(request):
+        api.send_direct_message(user_id," Nya~")
+        
         req=request.get_json()
         cat_regex=re.compile(r'[Ss][Ee][Nn][Dd] [Mm][Ee] [Cc][Aa][Tt] [Ff][Aa][Cc][Tt][Ss]')
         send_cats=False
