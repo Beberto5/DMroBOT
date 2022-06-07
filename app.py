@@ -30,6 +30,5 @@ def index():
     return f"<h3>Welcome to Cat Facts!</h3>"
 
 if __name__=='__main__':
-    print('parto')
+    1+1
     app.run(port=5000)
-    print('finisco')
