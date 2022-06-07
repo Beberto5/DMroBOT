@@ -5,6 +5,15 @@ import hashlib
 import hmac 
 import json
 
+
+# per cat
+import re
+import api_config
+import catfacts
+api=api_config.create_api()
+
+
+
 app=Flask(__name__)
 
 CONSUMER_KEY=config('consumer_key')
@@ -30,5 +39,6 @@ def index():
     return f"<h3>Welcome to Cat Facts!</h3>"
 
 if __name__=='__main__':
-    1+1
+    print('parto')
     app.run(port=5000)
+    print('finisco')

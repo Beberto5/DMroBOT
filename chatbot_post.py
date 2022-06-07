@@ -2,6 +2,22 @@
 def respond_with_facts():
     if validateRequest(request):
         #Do whatever you like here!
+        req=request.get_json()
+        cat_regex=re.compile(r'[Ss][Ee][Nn][Dd] [Mm][Ee] [Cc][Aa][Tt] [Ff][Aa][Cc][Tt][Ss]')
+        send_cats=False
+        user_id = ''
+
+        if 'direct_message_events' in req.keys():
+            msg_txt = str(req['direct_message_events'][0]['message_create']['message_data']['text'])
+            user_id = str(req['direct_message_events'][0]['message_create']['sender_id'])
+            send_cats = cat_regex.search(msg_txt)
+
+        if user_id != 'YOUR-PERSONAL-USER-ID' and send_cats:
+            api.send_direct_message(user_id,catfacts.retrieveCatfact()+" Nya~")
+
+
+
+
     else:
         res = {'message':"Unauthorized Access"}
         return Response(res,status=401)
